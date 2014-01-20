@@ -1,0 +1,23 @@
+services:
+  acme.excel:
+    class: Acme\DemoBundle\Service\Excel
+  acme.twig.default_extension:
+    class: Acme\DemoBundle\Twig\DemoExtension
+    tags:
+      - { name: twig.extension }
+
+  acme.user.profile.form.type:
+    class: Acme\DemoBundle\Form\UserProfileType
+    arguments:
+      - %fos_user.model.user.class%
+    tags:
+      - { name: form.type, alias: acme_user_profile }
+
+  twig.extension.text:
+    class: Twig_Extensions_Extension_Text
+    tags:
+      - { name: twig.extension }
+  twig.extension.intl:
+    class: Twig_Extensions_Extension_Intl
+    tags:
+      - { name: twig.extension }

@@ -1,0 +1,7 @@
+{% extends 'TwigBundle:Exception:error.html.twig' %}
+
+{% block title 'error.403.title'|trans({}, 'errors') %}
+
+{% block message %}
+    <p>{{ 'error.403.message'|trans({}, 'errors') }}</p>
+{% endblock %}

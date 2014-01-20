@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="well">
+    {% include 'DemoBundle:Registration:_countrySwitcher.html.twig' %}
+    <h1>{{ 'content.thanks'|trans }}</h1>
+    <p>{{ 'content.thanks_message'|trans({'%name%': registration.name}) }}</p>
+    <p>{{ 'content.regards'|trans }}</p>
+    <hr />
+    <p><a href="{{ path('registration', {_locale: app.request.locale}) }}">{{ 'content.back'|trans() }}</a></p>
+</div>
+{% endblock %}

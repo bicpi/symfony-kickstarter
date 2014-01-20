@@ -1,0 +1,25 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+    mailer_encryption: ~
+    mailer_delivery_address: me@example.com # safety first
+
+    from_address: me@example.org
+    bounce_address: me@example.org
+    notification_address: me@example.org
+
+    locale:            en
+    secret:            This$Token/Is§Not(So)Secret!Change?It
+
+    bin_uglifycss: /usr/local/bin/uglifycss
+    bin_uglifyjs: /usr/local/bin/uglifyjs
+

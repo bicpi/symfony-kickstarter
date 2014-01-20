@@ -1,0 +1,16 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block title "Your account profile" %}
+
+{% block fos_user_content %}
+<div class="well">
+    <legend>{{ block('title') }}</legend>
+    <div class="row">
+        <div class="col-sm-4">
+            <p><b>Name</b><br />{{ user.fullName }}</p>
+            <p><b>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</b><br />{{ user.username }}</p>
+            <p><b>Date of birth</b><br />{{ user.dateOfBirth|localizeddate('short', 'none', 'en_GB') }}</p>
+        </div>
+    </div>
+    <p><a class="btn btn-default" href="{{ path('fos_user_profile_edit') }}">Edit</a></p>
+</div>
+{% endblock fos_user_content %}

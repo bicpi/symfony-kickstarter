@@ -1,0 +1,7 @@
+{
+    "name": "symfony-kickstarter",
+    "version": "0.1.0",
+    "dependencies": {
+        "holderjs": "2.3.0"
+    }
+}

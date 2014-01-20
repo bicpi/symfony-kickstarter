@@ -1,0 +1,23 @@
+nav:
+    home: Startseite
+    registration: Registrierung
+    user: Benutzerbereich
+    admin: Adminbereich
+
+content:
+    registration: Registrierung
+    complete_form: Bitte füllen Sie folgendes Formular aus.
+    thanks: Danke
+    thanks_message: %name%, vielen Dank für Ihre Registrierung.
+    regards: MfG
+    back: Zurück
+
+button:
+    submit: Registrieren
+
+label:
+    empty: Bitte wählen
+    name: Name
+    email: E-Mail
+    country: Land
+    items: Verpflegung

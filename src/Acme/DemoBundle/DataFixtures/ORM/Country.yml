@@ -1,0 +1,20 @@
+country_de:
+    title:
+        en: Germany
+        de: Deutschland
+country_it:
+    title:
+        en: Italy
+        de: Italien
+country_at:
+    title:
+        en: Austria
+        de: Österreich
+country_be:
+    title:
+        en: Belgium
+        de: Belgien
+country_fr:
+    title:
+        en: France
+        de: Frankreich

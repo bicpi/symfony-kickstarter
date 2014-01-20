@@ -1,0 +1,24 @@
+<?php
+$locales = array('de', 'en');
+$countries = array('de', 'fr', 'it', 'be', 'at');
+
+$items = array();
+for ($i = 1; $i <= 2; $i++) {
+  for ($j = 1; $j <= 3; $j++) {
+    $items[] = "item_{$i}_{$j}";
+  }
+}
+?>
+
+<?php for ($i = 1; $i < 47; $i++): ?>
+registration_<?php echo $i; ?>:
+  locale: <?php echo $locales[array_rand($locales)]."\n"; ?>
+  name: John Doe <?php echo $i."\n"; ?>
+  email: example-<?php echo $i; ?>@example.com
+  Country: country_<?php echo $countries[array_rand($countries)]."\n"; ?>
+  Items:
+    <?php foreach ((array) array_rand($items, mt_rand(1, 5)) as $key): ?>
+      - <?php echo $items[$key]."\n"; ?>
+    <?php endforeach ?>
+  <?php echo "\n"; ?>
+<?php endfor ?>

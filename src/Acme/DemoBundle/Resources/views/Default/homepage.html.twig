@@ -1,0 +1,113 @@
+{% extends '::base.html.twig' %}
+
+{% block title 'Welcome' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="page-header">{{ block('title') }}. <small>This is a Symfony Kickstarter.</small></h1>
+    <p class="lead">
+        <b>Don't Repeat Yourself</b>
+        &nbsp;
+        <span class="glyphicon glyphicon glyphicon-hand-right"></span>
+        &nbsp;
+        The Symfony Kickstarter provides a solid Symfony starter kit.
+    </p>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Demo Applications</div>
+    <div class="panel-body">
+        <div class="pull-left" style="padding-right: 20px">
+            <img data-src="holder.js/200x200" width="200" height="200" alt="200x200" class="thumbnail" />
+        </div>
+        <div class="list-group pull-left">
+            <a class="list-group-item" href="{{ path('registration') }}">
+                <h3 class="list-group-item-heading">Demo registration (multilingual)</h3>
+                <p>Register for a fake event.</p>
+            </a>
+            <a class="list-group-item" href="{{ path('admin') }}">
+                <h3 class="list-group-item-heading">Demo registration admin area</h3>
+                <p class="list-group-item-text">
+                    Display all registrations in a secured backend.<br />
+                    <small>Credentials: admin / admin &amp; user / user</small>
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">jQuery Check</div>
+    <div class="panel-body"><b id="jquery">jQuery is NOT available</b></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">jQueryUI Check</div>
+    <div class="panel-body"><button class="btn btn-xs" id="jqueryui">Open dialog</button></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">XHR test with <code>FOSJsRoutingBundle</code></div>
+    <div class="panel-body">
+        <form class="form-inline" id="xhr_test">
+            <div class="form-group">
+                <label class="sr-only" for="xhr_first">y</label>
+                <input type="text" name="xhr_first" id="xhr_first" class="form-control" placeholder="x" style="width:60px" />
+            </div>
+            <div class="form-group">&times;</div>
+            <div class="form-group">
+                <label class="sr-only" for="xhr_second">y</label>
+                <input type="text" name="xhr_second" id="xhr_second" class="form-control" placeholder="y" style="width:60px" />
+            </div>
+            <div class="form-group">=</div>
+            <div class="form-group">
+                <input type="text" name="xhr_result" id="xhr_result" class="form-control" disabled value="?" style="width:60px" />
+            </div>
+            <div class="form-group">&nbsp;&nbsp;&nbsp;</div>
+            <button type="submit" id="xhr_calculate" class="btn btn-default">Calculate</button>
+        </form>
+    </div>
+</div>
+
+<div id="dialog" title="Check dialog" style="display: none;">
+    <p>This is jQueryUI check dialog.</p>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(function(){
+    $('#jquery').text('jQuery is up and running');
+
+    $( "#dialog" ).dialog({
+        resizable: false,
+        autoOpen: false,
+        modal: true,
+        height: 200,
+        buttons: {
+            Close: function() {
+                $(this).dialog('close');
+            }
+        }
+    });
+    $('#jqueryui').click(function(){
+        $('#dialog').dialog('open');
+    });
+
+    $('#xhr_test').submit(function(){
+        var x = $('#xhr_first').val();
+        var y = $('#xhr_second').val();
+        if (x && y) {
+            $.getJSON(
+                Routing.generate('xhr_multiply', { first: x, second: y }),
+                function(data) {
+                    $('#xhr_result').val(data.result);
+                }
+            );
+        }
+
+        return false;
+    });
+});
+</script>
+{% endblock %}

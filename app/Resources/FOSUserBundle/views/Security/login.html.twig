@@ -1,0 +1,51 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title 'Log In' %}
+
+{% block fos_user_content %}
+<div class="well">
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
+        <legend>Log In</legend>
+        {% if error %}
+            {% block errs %}
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ error|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endblock %}
+        {% endif %}
+        <div class="form-group">
+            <label class="col-sm-1" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Email" required="required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <div class="col-sm-4">
+                <input type="password" class="form-control" id="password" name="_password" placeholder="Password" required="required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-4">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="stayloggedin" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-4">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <button type="submit" class="btn btn-primary">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-4">
+                <a href="{{ path('fos_user_resetting_request') }}" data-role="button">Did you forget your password?</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock fos_user_content %}

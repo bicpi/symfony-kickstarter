@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>New Registration</title>
+    </head>
+    <body>
+        <h3>New Registration</h3>
+        <p>Hi, you have a new registration.</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Country</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ registration.id }}</td>
+                <td>{{ registration.name }}</td>
+                <td>{{ registration.country|trans({}, 'messages', 'en') }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>Got to <a href="{{ url('admin') }}">the admin area</a> for more details and excel export of all registrations.</p>
+        <p>Regards</p>
+    </body>
+</html>

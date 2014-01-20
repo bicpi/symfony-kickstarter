@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title "Edit account profile" %}
+
+{% block fos_user_content %}
+<div class="well">
+    <legend>{{ block('title') }}</legend>
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+</div>
+{% endblock fos_user_content %}

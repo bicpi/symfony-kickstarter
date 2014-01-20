@@ -1,0 +1,23 @@
+nav:
+    home: Home
+    registration: Registration
+    user: User area
+    admin: Admin area
+
+content:
+    registration: Registration
+    complete_form: Thank you for completing the form below.
+    thanks: Thank You
+    thanks_message: %name%, thank you for registering.
+    regards: Regards
+    back: Back
+
+button:
+    submit: Submit
+
+label:
+    empty: Please select
+    name: Name
+    email: Email
+    country: Country
+    items: Catering

@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    DocumentRoot /home/devs/www/vendor/symfony-kickstarter/web
+    ServerName symfony-kickstarter.devs
+    ErrorLog /var/log/apache2/acme-symfony-kickstarter-error.log
+    CustomLog /var/log/apache2/acme-symfony-kickstarter-access.log common
+    php_value error_log /home/devs/www/acme/symfony-kickstarter/app/logs/php-error.log
+    <Directory /home/devs/www/acme/symfony-kickstarter/web>
+        Require all granted
+        # Or on Apache 2.2
+        # Allow from all
+        AllowOverride all
+    </Directory>
+</VirtualHost>

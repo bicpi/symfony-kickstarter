@@ -1,0 +1,11 @@
+error.title: Error
+error.message: An error occured.
+
+error.403.title: "Error 403: Access denied"
+error.403.message: You are not allowed to access the requested page.
+
+error.404.title: "Error 404: Page not found"
+error.404.message: The requested page could not be found.
+
+error.500.title: "Error 500: Internal server error"
+error.500.message: Due to an internal server error, the requested page cannot be displayed.

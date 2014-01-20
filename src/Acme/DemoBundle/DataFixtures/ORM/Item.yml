@@ -1,0 +1,33 @@
+# Item Category 1
+item_1_1:
+  Category: item_category_1
+  title:
+      en: Orange Juice
+      de: Orangensaft
+item_1_2:
+  Category: item_category_1
+  title:
+      en: Coke
+      de: Cola
+item_1_3:
+  Category: item_category_1
+  title:
+      en: Lemonade
+      de: Limonade
+
+# Item Category 2
+item_2_1:
+  Category: item_category_2
+  title:
+      en: Chocolate
+      de: Schokolade
+item_2_2:
+  Category: item_category_2
+  title:
+      en: Peanuts
+      de: Erdnüsse
+item_2_3:
+  Category: item_category_2
+  title:
+      en: Cookies
+      de: Kekse

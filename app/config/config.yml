@@ -1,0 +1,100 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        assets_version: 1
+        assets_version_format: %%s?v=%%s
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        my_twig_global: %notification.subject%
+    form:
+        resources:
+            - "::forms.html.twig"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    filters:
+        cssrewrite: ~
+        sass:
+            apply_to: "\.scss$"
+        coffee:
+            apply_to: "\.coffee$"
+        uglifycss:
+            bin: %bin_uglifycss%
+        uglifyjs2:
+            bin: %bin_uglifyjs%
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport:  "%mailer_transport%"
+    host:       "%mailer_host%"
+    username:   "%mailer_user%"
+    password:   "%mailer_password%"
+    encryption: "%mailer_encryption%"
+    spool:     { type: memory }
+
+### Custom
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Acme\DemoBundle\Entity\User
+    profile:
+      form:
+        type: acme_user_profile
+
+#bicpi_html_converter:
+#    guesser_chain:
+#        - lynx
+#        - html2text
+#        - simple
+
+parameters:
+    notification.subject: Symfony Kickstarter Notification
+    notification.from: %from_address%
+    notification.to: %notification_address%
+    notification.return_path: %bounce_address%
+    paginator.items_per_page: 10

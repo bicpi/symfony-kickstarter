@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block account %}{% endblock %}
+
+{% block title "Reset password" %}
+
+{% block fos_user_content %}
+<p class="alert alert-success">
+    <span class="label label-success">OK</span>
+    {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+    <a href="{{ path('homepage') }}">&raquo; Homepage</a>
+</p>
+{% endblock %}

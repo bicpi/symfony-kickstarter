@@ -1,0 +1,11 @@
+error.title: Fehler
+error.message: Es ist ein Fehler aufgetreten.
+
+error.403.title: "Fehler 403: Zugriff verweigert"
+error.403.message: Sie haben keine Berechtigung für die angeforderte Seite.
+
+error.404.title: "Fehler 404: Seite nicht gefunden"
+error.404.message: Die angeforderte Seite wurde nicht gefunden.
+
+error.500.title: "Fehler 500: Interner Server-Fehler"
+error.500.message: Auf Grund eines internen Server-Fehlers kann die angeforderte Seite nicht angezeigt werden.

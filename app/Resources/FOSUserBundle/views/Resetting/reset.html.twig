@@ -1,0 +1,33 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block title "Enter new password" %}
+
+{% block account %}{% endblock %}
+
+{% block fos_user_content %}
+<div class="well">
+    {{ form_start(form, {'action': path('fos_user_resetting_reset', {'token': token}), attr: {class: 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+            {{ form_label(form.new.first, null, {label_attr: {class: 'col-sm-2'}}) }}
+            <div class="col-sm-4">
+                {{ form_errors(form.new.first) }}
+                {{ form_widget(form.new.first, {attr: {class: 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.new.second, null, {label_attr: {class: 'col-sm-2'}}) }}
+            <div class="col-sm-4">
+                {{ form_errors(form.new.second) }}
+                {{ form_widget(form.new.second, {attr: {class: 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <a class="btn" href="{{ path('homepage') }}">Cancel</a>
+                <button type="submit" class="btn btn-primary">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+        </div>
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+{% endblock fos_user_content %}

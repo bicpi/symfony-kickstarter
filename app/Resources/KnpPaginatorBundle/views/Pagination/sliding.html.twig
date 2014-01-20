@@ -1,0 +1,36 @@
+{# Sliding pagination control implementation #}
+
+<div class="pull-left">
+    Total results: <b>{{ totalCount }}</b>
+</div>
+
+{% if pageCount > 1 %}
+    <ul class="pagination pagination-sm pull-right" style="margin-top: 0">
+        {% if previous is defined %}
+            <li>
+                <a href="{{ path(route, query|merge({'page': previous})) }}">&laquo;</a>
+            </li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li>
+                    <a href="{{ path(route, query|merge({'page': page})) }}">{{ page }}</a>
+                </li>
+            {% else %}
+                <li><span class="active">{{ page }}</span></li>
+            {% endif %}
+
+        {% endfor %}
+
+        {% if next is defined %}
+            <li>
+                <a href="{{ path(route, query|merge({'page': next})) }}">&raquo;</a>
+            </li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endif %}

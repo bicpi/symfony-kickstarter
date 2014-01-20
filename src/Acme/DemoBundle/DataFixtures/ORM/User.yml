@@ -1,0 +1,17 @@
+user_user:
+  firstName: Usy
+  lastName: Usix
+  username: user
+  email: user@example.com
+  plainPassword: user
+  roles: []
+  dateOfBirth: "1988-12-20"
+user_admin:
+  firstName: Adi
+  lastName: Admin
+  username: admin
+  email: admin@example.com
+  plainPassword: admin
+  roles:
+    - ROLE_SUPER_ADMIN
+  dateOfBirth: "1977-07-31"
