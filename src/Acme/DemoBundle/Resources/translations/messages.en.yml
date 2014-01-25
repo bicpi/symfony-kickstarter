@@ -1,6 +1,7 @@
 nav:
     home: Home
     registration: Registration
+    product: Products
     user: User area
     admin: Admin area
 

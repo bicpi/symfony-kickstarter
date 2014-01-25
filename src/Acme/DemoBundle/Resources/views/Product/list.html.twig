@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="well">
+    <h1>Products</h1>
+    <p><a href="{{ path('product_create') }}" class="btn btn-default">Create</a></p>
+    <table class="table table-bordered" style="width:50%">
+        <thead>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Liked by</th>
+            <th style="width:100px">Actions</th>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>
+                        {% if is_granted(constant('Acme\\DemoBundle\\Entity\\Product::PRODUCT_OWNER'), product) %}
+                            You!
+                        {% else %}
+                            {{ product.user.fullName }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for liker in product.likers %}
+                            {{ liker.fullName }}{% if not loop.last %}<br />{% endif %}
+                        {% else %}
+                            -
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if is_granted(constant('Acme\\DemoBundle\\Entity\\Product::PRODUCT_OWNER'), product) %}
+                            <a href="{{ path('product_edit', {id: product.id}) }}">&raquo; Edit</a><br />
+                        {% endif %}
+                        {% if is_granted(constant('Acme\\DemoBundle\\Entity\\Product::PRODUCT_LIKE'), product) %}
+                            <a href="{{ path('product_like', {id: product.id}) }}">&raquo; Like</a><br />
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

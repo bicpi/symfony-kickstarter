@@ -3,7 +3,12 @@
 namespace Acme\DemoBundle\Service;
 
 use Acme\DemoBundle\Entity\Registration;
+use JMS\DiExtraBundle\Annotation as DI;
+use JMS\DiExtraBundle\Annotation\Service;
 
+/**
+ * @Service("acme.excel")
+ */
 class Excel
 {
     const FORMAT_DATE = 'dd/mm/yyyy';

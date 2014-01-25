@@ -1,11 +1,19 @@
-user_user:
+user_user_1:
   firstName: Usy
   lastName: Usix
-  username: user
-  email: user@example.com
-  plainPassword: user
+  username: user1
+  email: user1@example.com
+  plainPassword: user1
   roles: []
   dateOfBirth: "1988-12-20"
+user_user_2:
+  firstName: Usilyne
+  lastName: Usilinix
+  username: user2
+  email: user2@example.com
+  plainPassword: user2
+  roles: []
+  dateOfBirth: "1967-01-30"
 user_admin:
   firstName: Adi
   lastName: Admin

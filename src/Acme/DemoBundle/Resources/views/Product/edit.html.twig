@@ -1,0 +1,8 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="well">
+    <h1>Edit Product &raquo;{{ product.name }}&laquo;</h1>
+    {% include 'DemoBundle:Product:form.html.twig' %}
+</div>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace Acme\DemoBundle\DataFixtures\ORM;
 
+use Acme\DemoBundle\Entity\Product;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -26,6 +27,7 @@ class LoadData extends AbstractFixture implements OrderedFixtureInterface
         $this->loadItem();
         $this->loadFOSUser();
         $this->loadRegistration();
+        $this->loadProduct();
         $this->manager->flush();
     }
 
@@ -103,6 +105,20 @@ class LoadData extends AbstractFixture implements OrderedFixtureInterface
                 $entity->addItem($this->getReference($item));
             }
 
+            $this->addReference($key, $entity);
+            $this->manager->persist($entity);
+        }
+    }
+
+    public function loadProduct()
+    {
+        foreach ($this->loadRaw('Product') as $key => $data) {
+            $entity = new Product();
+            $entity->setName($data['name']);
+            $entity->setUser($this->getReference($data['user']));
+            foreach ($data['likers'] as $user) {
+                $entity->addLiker($this->getReference($user));
+            }
             $this->addReference($key, $entity);
             $this->manager->persist($entity);
         }

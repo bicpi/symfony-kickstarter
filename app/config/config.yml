@@ -92,6 +92,12 @@ fos_user:
 #        - html2text
 #        - simple
 
+jms_di_extra:
+    locations:
+        # all_bundles: false
+        # bundles: [FooBundle, AcmeBlogBundle]
+        directories: ["%kernel.root_dir%/../src"]
+
 parameters:
     notification.subject: Symfony Kickstarter Notification
     notification.from: %from_address%

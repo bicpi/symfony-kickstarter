@@ -2,13 +2,12 @@
 
 namespace Acme\DemoBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * @ORM\MappedSuperclass
+ * Selectionable trait.
+ *
+ * Should be used inside entity, that needs to be selectionable.
  */
-abstract class Selection
+trait Selectionable
 {
     /**
      * @ORM\Column(type="integer")

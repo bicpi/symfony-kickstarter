@@ -28,7 +28,8 @@
         "friendsofsymfony/user-bundle": "~1.3",
         "codeplex/phpexcel": "~1.7",
         "knplabs/knp-paginator-bundle": "~2.3",
-        "bicpi/html-converter-bundle": "1.0.*"
+        "bicpi/html-converter-bundle": "1.0.*",
+        "liip/functional-test-bundle": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [

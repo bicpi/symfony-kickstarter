@@ -6,7 +6,11 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use JMS\DiExtraBundle\Annotation as DI;
 
+/**
+ * @DI\FormType
+ */
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -66,6 +70,6 @@ class RegistrationType extends AbstractType
 
     public function getName()
     {
-        return 'registration';
+        return 'registration_form';
     }
 }

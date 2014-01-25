@@ -8,8 +8,8 @@ class UserControllerTest extends WebTestCase
 {
     public function testIndexIsSecured()
     {
-        $client = static::createClient();
-
+        $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
+        $client = $this->makeClient();
 
         $crawler = $client->request('GET', '/user/');
         $crawler = $client->followRedirect();
@@ -22,7 +22,8 @@ class UserControllerTest extends WebTestCase
 
     public function testIndex()
     {
-        $client = static::createClient();
+        $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
+        $client = $this->makeClient();
         $this->applyClientAuth($client, 'user', 'user');
 
         $crawler = $client->request('GET', '/user/');

@@ -1,0 +1,16 @@
+product_1:
+    name: TV
+    user: user_user_1
+    likers: [user_user_2]
+product_2:
+    name: Radio
+    user: user_user_2
+    likers: []
+product_3:
+    name: Tablet
+    user: user_user_2
+    likers: []
+product_4:
+    name: Computer
+    user: user_admin
+    likers: []

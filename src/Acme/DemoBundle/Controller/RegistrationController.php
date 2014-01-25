@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Acme\DemoBundle\Entity\Registration;
-use Acme\DemoBundle\Form\RegistrationType;
 
 /**
  * @Route("/{_locale}/registration", defaults={"_locale"="en"}, requirements={"_locale"="en|de"})
@@ -21,7 +20,7 @@ class RegistrationController extends Controller
     public function registerAction(Request $request)
     {
         $registration = (new Registration())->setLocale($request->getLocale());
-        $form = $this->createForm(new RegistrationType(), $registration, [
+        $form = $this->createForm('registration_form', $registration, [
             'action' => $this->generateUrl('registration', [
                 '_locale' => $request->getLocale()
             ]),

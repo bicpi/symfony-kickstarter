@@ -8,9 +8,10 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 /**
  * @ORM\Entity
  */
-class Country extends Selection
+class Country
 {
     use ORMBehaviors\Translatable\Translatable;
+    use Selectionable;
 
     public function __toString()
     {

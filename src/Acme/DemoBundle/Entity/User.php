@@ -2,6 +2,7 @@
 
 namespace Acme\DemoBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -38,6 +39,23 @@ class User extends BaseUser
      * @ORM\Column(type="date", nullable=true)
      */
     protected $dateOfBirth;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
+     */
+    protected $products;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="liker")
+     */
+    protected $likedProducts;
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->products = new ArrayCollection();
+        $this->likedProducts = new ArrayCollection();
+    }
 
     public function setFirstName($firstName)
     {
@@ -78,6 +96,22 @@ class User extends BaseUser
     public function getFullName()
     {
         return sprintf('%s %s', $this->firstName, $this->lastName);
+    }
+
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    public function addLikedProduct(Product $product)
+    {
+        $product->addLiker($this);
+        $this->likedProducts[] = $product;
+    }
+
+    public function getLikedProducts()
+    {
+        return $this->likedProducts;
     }
 
     public function __toString()

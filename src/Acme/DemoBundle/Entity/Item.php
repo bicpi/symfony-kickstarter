@@ -8,19 +8,15 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 /**
  * @ORM\Entity
  */
-class Item extends Selection
+class Item
 {
     use ORMBehaviors\Translatable\Translatable;
+    use Selectionable;
 
     /**
      * @ORM\ManyToOne(targetEntity="ItemCategory")
      */
     protected $category;
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function setCategory(ItemCategory $category)
     {

@@ -34,11 +34,24 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
+        if (in_array($this->getEnvironment(), array('test'))) {
+            $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
+        }
+
         return $bundles;
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+
+        // load local_*.yml or local.yml
+        if (
+            file_exists($file = __DIR__.'/config/local_'.$this->getEnvironment().'.yml')
+            ||
+            file_exists($file = __DIR__.'/config/local.yml')
+        ) {
+            $loader->load($file);
+        }
     }
 }

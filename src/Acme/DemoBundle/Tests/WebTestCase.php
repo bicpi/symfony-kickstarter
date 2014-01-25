@@ -2,7 +2,7 @@
 
 namespace Acme\DemoBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase as BaseWebTestCase;
 
 class WebTestCase extends BaseWebTestCase
 {

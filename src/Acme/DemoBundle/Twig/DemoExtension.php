@@ -2,6 +2,12 @@
 
 namespace Acme\DemoBundle\Twig;
 
+use JMS\DiExtraBundle\Annotation as DI;
+
+/**
+ * @DI\Service("acme.twig.default_extension")
+ * @DI\Tag("twig.extension")
+ */
 class DemoExtension extends \Twig_Extension
 {
     public function getFunctions()
