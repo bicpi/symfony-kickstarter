@@ -2,18 +2,20 @@
 
 namespace Acme\DemoBundle\Controller;
 
-use Acme\DemoBundle\Tests\WebTestCase;
+use Acme\DemoBundle\Tests\WebTestCase as BaseWebTestCase;
 
-class XhrControllerTest extends WebTestCase
+/**
+ * @IgnoreAnnotation("dataProvider")
+ */
+class XhrControllerTest extends BaseWebTestCase
 {
     public function testResponseFormat()
     {
         $client = static::createClient();
         $client->request('GET', '/xhr/multiply/4x5.json');
-
         $response = $client->getResponse();
 
-        $this->assertTrue($client->getResponse()->headers->contains('content-type', 'application/json'));
+        $this->assertTrue($response->headers->contains('content-type', 'application/json'));
     }
 
     /**

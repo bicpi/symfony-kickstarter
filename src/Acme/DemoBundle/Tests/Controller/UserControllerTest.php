@@ -24,7 +24,7 @@ class UserControllerTest extends WebTestCase
     {
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
         $client = $this->makeClient();
-        $this->applyClientAuth($client, 'user', 'user');
+        $this->applyClientAuth($client, 'user1', 'user1');
 
         $crawler = $client->request('GET', '/user/');
 

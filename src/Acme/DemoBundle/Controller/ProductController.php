@@ -17,7 +17,6 @@ class ProductController extends Controller
 {
     /**
      * @Route("/", name="product")
-     * @Secure("ROLE_USER")
      * @Template
      */
     public function listAction(Request $request)
@@ -30,7 +29,6 @@ class ProductController extends Controller
 
     /**
      * @Route("/create", name="product_create")
-     * @Secure("ROLE_USER")
      * @Template
      */
     public function createAction(Request $request)

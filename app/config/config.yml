@@ -4,7 +4,7 @@ imports:
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
-    #esi:             ~
+    esi:             ~
     translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:

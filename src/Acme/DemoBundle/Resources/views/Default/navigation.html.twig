@@ -1,0 +1,66 @@
+<div class="navbar-collapse collapse">
+    <p class="navbar-text">Now: {{ 'now'|date('H:i:s') }}</p>
+    <ul class="nav navbar-nav">
+        <li class="{% if 'homepage' == app.request.get('_route') %}active{% endif %}">
+            <a href="{{ path('homepage') }}">{{ 'nav.home'|trans() }}</a>
+        </li>
+        <li class="{% if 'registration' == app.request.get('_route') %}active{% endif %}">
+            <a href="{{ path('registration') }}">{{ 'nav.registration'|trans() }}</a>
+        </li>
+        {% if app.user and is_granted('ROLE_USER') %}
+            <li class="{% if 'user' == app.request.get('_route') %}active{% endif %}">
+                <a href="{{ path('user') }}">{{ 'nav.user'|trans() }}</a>
+            </li>
+        {% endif %}
+        {% if app.user and is_granted('ROLE_USER') %}
+            <li class="{% if 'product' == app.request.get('_route') %}active{% endif %}">
+                <a href="{{ path('product') }}">{{ 'nav.product'|trans() }}</a>
+            </li>
+        {% endif %}
+        {% if app.user and is_granted('ROLE_ADMIN') %}
+            <li class="{% if 'admin' == app.request.get('_route') %}active{% endif %}">
+                <a href="{{ path('admin') }}">{{ 'nav.admin'|trans() }}</a>
+            </li>
+        {% endif %}
+    </ul>
+
+    {% block account %}
+        {% if app.user and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;
+                        {{ app.user.fullName }} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                        <li><a href="{{ path('fos_user_change_password') }}">Change password</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log Out
+                            </a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ path('homepage', {_switch_user: 'user'}) }}">
+                                    <span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Impersonate 'user' account
+                                </a>
+                            </li>
+                        {% elseif is_granted('ROLE_PREVIOUS_ADMIN') %}
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ path('homepage', {_switch_user: '_exit'}) }}">
+                                    <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Exit impersonation
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        {% else %}
+            {{ render(controller('DemoBundle:Default:quickLogin')) }}
+        {% endif %}
+    {% endblock %}
+</div>
