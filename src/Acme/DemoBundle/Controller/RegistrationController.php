@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Acme\DemoBundle\Entity\Registration;
+use Acme\DemoBundle\Entity\Event\RegistrationEvent;
 
 /**
  * @Route("/{_locale}/registration", defaults={"_locale"="en"}, requirements={"_locale"="en|de"})
@@ -29,6 +30,9 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
+
+            $event = new RegistrationEvent($registration);
+            $this->get('event_dispatcher')->dispatch(RegistrationEvent::CREATE, $event);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($registration);

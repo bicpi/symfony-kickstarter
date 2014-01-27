@@ -9,8 +9,10 @@ class AdminControllerTest extends WebTestCase
     public function testIndexIsSecured()
     {
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
-        $client = $this->makeClient();
-        $this->applyClientAuth($client, 'user', 'user');
+        $client = $this->makeClient([
+            'username' => 'user1',
+            'password' => 'user1'
+        ]);
 
         $crawler = $client->request('GET', '/admin/');
 
@@ -23,8 +25,10 @@ class AdminControllerTest extends WebTestCase
     public function testIndex()
     {
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
-        $client = $this->makeClient();
-        $this->applyClientAuth($client, 'admin', 'admin');
+        $client = $this->makeClient([
+            'username' => 'admin',
+            'password' => 'admin'
+        ]);
 
         $crawler = $client->request('GET', '/admin/');
 

@@ -23,8 +23,10 @@ class UserControllerTest extends WebTestCase
     public function testIndex()
     {
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
-        $client = $this->makeClient();
-        $this->applyClientAuth($client, 'user1', 'user1');
+        $client = $this->makeClient([
+            'username' => 'user1',
+            'password' => 'user1'
+        ]);
 
         $crawler = $client->request('GET', '/user/');
 
