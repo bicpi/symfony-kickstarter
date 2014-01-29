@@ -28,7 +28,8 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        my_twig_global: %notification.subject%
+        # Sample parameter
+        my_twig_global: %paginator.items_per_page%
     form:
         resources:
             - "::forms.html.twig"
@@ -44,10 +45,6 @@ assetic:
             apply_to: "\.scss$"
         coffee:
             apply_to: "\.coffee$"
-        uglifycss:
-            bin: %bin_uglifycss%
-        uglifyjs2:
-            bin: %bin_uglifyjs%
 
 # Doctrine Configuration
 doctrine:
@@ -99,8 +96,7 @@ jms_di_extra:
         directories: ["%kernel.root_dir%/../src"]
 
 parameters:
-    notification.subject: Symfony Kickstarter Notification
-    notification.from: %from_address%
-    notification.to: %notification_address%
-    notification.return_path: %bounce_address%
     paginator.items_per_page: 10
+    mailer_params:
+        from: %mailer_params_from%
+        return_path: %mailer_params_return_path%

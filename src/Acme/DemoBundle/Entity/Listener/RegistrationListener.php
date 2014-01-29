@@ -3,9 +3,8 @@
 namespace Acme\DemoBundle\Entity\Listener;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use Symfony\Component\HttpKernel\KernelEvents;
 use Acme\DemoBundle\Entity\Event\RegistrationEvent;
-#use Mailer
+use Acme\DemoBundle\Service\Mailer;
 
 /**
  * @DI\Service
@@ -14,29 +13,29 @@ class RegistrationListener
 {
     private $mailer;
 
+    private $adminEmail;
+
     /**
      * @DI\InjectParams({
-     *     "mailer" = @DI\Inject
+     *     "mailer" = @DI\Inject("acme.mailer"),
+     *     "adminEmail" = @DI\Inject("%admin_email%")
      * })
      */
-    public function __construct(\Swift_Mailer $mailer)
+    public function __construct(Mailer $mailer, $adminEmail)
     {
         $this->mailer = $mailer;
+        $this->adminEmail = $adminEmail;
     }
 
     /**
-     * @DI\Observe(RegistrationEvent::CREATE)
+     * @DI\Observe(RegistrationEvent::CREATED)
      */
-    public function onRegistrationCreate(RegistrationEvent $event)
+    public function onRegistrationCreated(RegistrationEvent $event)
     {
-        $registration = $event->getRegistration();
-
-        $message = (new \Swift_Message())
-            ->setSubject('Event listening')
-            ->setFrom('p.rieber@gmail.com')
-            ->setTo('p.rieber@gmail.com')
-            ->setReturnPath('p.rieber@gmail.com')
-            ->setBody('Hei ho event listening');
-        $this->mailer->send($message);
+        $this->mailer->send(
+            (new \Swift_Message())->setTo($this->adminEmail),
+            'DemoBundle:Registration:notification.html.twig',
+            ['registration' => $event->getRegistration()]
+        );
     }
 }

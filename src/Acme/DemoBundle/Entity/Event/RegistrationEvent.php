@@ -7,7 +7,7 @@ use Acme\DemoBundle\Entity\Registration;
 
 class RegistrationEvent extends Event
 {
-    const CREATE = 'registration.create';
+    const CREATED = 'registration.created';
 
     protected $registration;
 

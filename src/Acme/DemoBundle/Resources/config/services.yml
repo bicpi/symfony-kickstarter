@@ -1,4 +1,9 @@
 services:
+    container: @service_container
+    dispatcher: @event_dispatcher
+    security: @security.context
+    html2text: @bicpi.html_converter
+
 #  acme.demo:
 #    class: Acme\DemoBundle\Service\Demo
 #    arguments:
@@ -7,11 +12,11 @@ services:
 #    tags:
 #      - { name: tag.name, alias: acme_demo }
 
-  twig.extension.text:
-    class: Twig_Extensions_Extension_Text
-    tags:
-      - { name: twig.extension }
-  twig.extension.intl:
-    class: Twig_Extensions_Extension_Intl
-    tags:
-      - { name: twig.extension }
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

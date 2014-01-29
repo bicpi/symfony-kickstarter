@@ -16,34 +16,38 @@ what it contains, and how to get set it up.
 ### Features
 
 * Common Symfony2, Bundles and Git configuration
-* Integration of 3rd party software:
+* Integration and demonstration of 3rd party software:
     * Bower
     * Travis
     * FOSUserBundle
     * KnpPaginatorbundle
     * DoctrineFixturesBundle
     * FOSJsRoutingBundle
+    * JMSDiExtraBundle
+    * JMSDiSecurityBundle
     * PhpExcel
     * HtmlConverterBundle
     * jQuery
     * jQueryUI
     * holder.js
-* Demos:
-    * Using Assetic with uglifycss and uglifyjs
-    * Bootstrap3 layout
+    * Assetic
+    * Bootstrap3
+* Concept demos:
     * Multilingual registration form
+    * Fixtures
     * Admin area
     * Excel Export
     * Send Emails including automatically generated plain text part
     * User impersonation
+    * HTTP cache and ESI
+    * Security and Voters
     * Ajax
     * Pagination with sorting
-    * jQueryUI
-    * holder.js
     * Authentication/Authorization
     * User profile
     * Custom Error Pages
-* Test samples
+    * Functional tests
+    * Miscellaneous tricks and helpers
 
 ### Install vendors
 

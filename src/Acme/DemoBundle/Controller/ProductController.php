@@ -2,6 +2,7 @@
 
 namespace Acme\DemoBundle\Controller;
 
+use Acme\DemoBundle\Entity\Event\ProductLikeEvent;
 use Acme\DemoBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

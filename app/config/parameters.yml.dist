@@ -13,13 +13,9 @@ parameters:
     mailer_encryption: ~
     mailer_delivery_address: me@example.com # safety first
 
-    from_address: me@example.org
-    bounce_address: me@example.org
-    notification_address: me@example.org
+    admin_email: me@example.org
+    mailer_params_from: me@example.org
+    mailer_params_return_path: me@example.org
 
     locale:            en
     secret:            This$Token/Is§Not(So)Secret!Change?It
-
-    bin_uglifycss: /usr/local/bin/uglifycss
-    bin_uglifyjs: /usr/local/bin/uglifyjs
-
