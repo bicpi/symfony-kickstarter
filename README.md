@@ -1,32 +1,35 @@
-Symfony Kickstarter Edition
-===========================
+# Symfony Kickstarter Edition
 
 Welcome to the Symfony Kickstarter Edition - a fully-functional Symfony2
-application that you can be used as a skeleton for a new applications.
+application that you can be used as a skeleton for a new applications or
+for demonstration purposes.
 
 This document contains information on what's required to use this Kickstarter,
 what it contains, and how to get set it up.
 
 [![Build Status](https://secure.travis-ci.org/bicpi/symfony-kickstarter.png)](http://travis-ci.org/bicpi/symfony-kickstarter)
 
-### Requirements
+## Requirements
 
-* PHP 5.5+
+* PHP 5.4+
 * Some installation instructions assume an Ubuntu based system
-* Composer, bower, phpunit, uglifycss, uglifyjs
+* Composer, bower, PHPUnit, uglifycss, uglifyjs
 
-### Features
+## Features
 
-* Common Symfony2, Bundles and Git configuration
+* Common Symfony2 features like controllers, templating, bundle integration, database integration
+* Git configuration
+* Permission setup helper script
 * Integration and demonstration of 3rd party software:
     * Bower
-    * Travis
     * FOSUserBundle
-    * KnpPaginatorbundle
-    * DoctrineFixturesBundle
     * FOSJsRoutingBundle
+    * KnpPaginatorbundle
+    * KNP Labs Doctrine behaviors
+    * DoctrineFixturesBundle
     * JMSDiExtraBundle
     * JMSDiSecurityBundle
+    * LiipFunctionalTestBundle
     * PhpExcel
     * HtmlConverterBundle
     * jQuery
@@ -34,10 +37,11 @@ what it contains, and how to get set it up.
     * holder.js
     * Assetic
     * Bootstrap3
+    * Travis configuration
 * Concept demos:
     * Multilingual registration form
     * Fixtures
-    * Admin area
+    * Admin/User area
     * Excel Export
     * Send Emails including automatically generated plain text part
     * User impersonation
@@ -49,7 +53,12 @@ what it contains, and how to get set it up.
     * User profile
     * Custom Error Pages
     * Functional tests
+    * Custom Twig extension
     * Miscellaneous tricks and helpers
+
+## Installation
+
+Follow the next steps to get the Symfony Kickstarter up and running.
 
 ### Install vendors
 
@@ -67,6 +76,8 @@ Set correct permissions for cache and log folder using ACLs:
 
 ### Setup Virtual Host
 
+Setup virtual host configuration on Ubuntu:
+
     $ sudo cp app/config/sample.vhost /etc/apache2/sites-available/acme-symfony-kickstarter.conf
     $ sudo nano /etc/apache2/sites-available/acme-symfony-kickstarter.conf # do custom changes
     $ sudo a2ensite acme-symfony-kickstarter
@@ -79,13 +90,19 @@ Check configuration on console:
 
    $ php app/check.php
 
-Check configuration on webserver via http://symfony-kickstarter.devs/config.php
+Check configuration on webserver via `http://symfony-kickstarter.devs/config.php`.
 
 ### Setup Database
 
     $ app/console doctrine:database:create
     $ app/console doctrine:schema:create
     $ app/console doctrine:fixtures:load
+
+### Bower
+
+Install frontend dependencies using bower:
+
+    $ bower install
 
 ### Assetic File Watcher
 
@@ -96,3 +113,7 @@ If needed, activate Assetic file watcher for development:
 Dump your assets for production:
 
     $ app/console assetic:dump --env=prod
+
+### Execute Unit/Functional tests
+
+    $ phpunit -c app/
