@@ -45,6 +45,9 @@ assetic:
             apply_to: "\.scss$"
         coffee:
             apply_to: "\.coffee$"
+        uglifycss: ~
+        uglifyjs2:
+            mangle: true
 
 # Doctrine Configuration
 doctrine:

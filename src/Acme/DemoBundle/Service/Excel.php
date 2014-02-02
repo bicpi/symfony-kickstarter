@@ -80,28 +80,6 @@ class Excel
         return $this->retrieveContent($excel);
     }
 
-    protected function convertToCellValue($value)
-    {
-        if (is_object($value)) {
-            if ($value instanceof ArrayCollection) {
-                $vals = [];
-                foreach ($value as $o) {
-                    $vals[] = $o->__toString();
-                }
-
-                return implode(', ', $vals);
-            }
-
-            if ($value instanceof \DateTime) {
-                return \PHPExcel_Shared_Date::PHPToExcel($value);
-            }
-
-            return $value->__toString();
-        }
-
-        return $value;
-    }
-
     protected function cellRange($col1, $row1, $col2, $row2)
     {
         if (is_integer($col1)) {

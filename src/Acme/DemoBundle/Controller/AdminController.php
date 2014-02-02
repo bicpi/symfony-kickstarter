@@ -44,7 +44,7 @@ class AdminController extends Controller
         );
 
         $excel = $this->container->get('acme.excel');
-        $registrations = $em->getRepository('DemoBundle:Registration')->findAll();
+        $registrations = $em->getRepository('DemoBundle:Registration')->getAll();
 
         return new Response($excel->registrations($registrations), 200, [
             'Pragma' => 'public',

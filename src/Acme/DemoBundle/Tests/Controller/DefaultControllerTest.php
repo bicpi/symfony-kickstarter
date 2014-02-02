@@ -17,8 +17,4 @@ class DefaultControllerTest extends WebTestCase
             $crawler->filter('html:contains("This is a Symfony Kickstarter.")')->count()
         );
     }
-
-    public function testQuickLogin()
-    {
-    }
 }

@@ -46,7 +46,7 @@ class User extends BaseUser
     protected $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="liker")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="likers")
      */
     protected $likedProducts;
 

@@ -11,7 +11,7 @@ class UserControllerTest extends WebTestCase
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
         $client = $this->makeClient();
 
-        $crawler = $client->request('GET', '/user/');
+        $client->request('GET', '/user/');
         $crawler = $client->followRedirect();
 
         $this->assertGreaterThan(
@@ -23,10 +23,7 @@ class UserControllerTest extends WebTestCase
     public function testIndex()
     {
         $this->loadFixtures(['Acme\DemoBundle\DataFixtures\ORM\LoadData']);
-        $client = $this->makeClient([
-            'username' => 'user1',
-            'password' => 'user1'
-        ]);
+        $client = $this->makeClient(['username' => 'user1', 'password' => 'user1']);
 
         $crawler = $client->request('GET', '/user/');
 

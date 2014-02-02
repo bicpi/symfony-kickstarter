@@ -2,13 +2,11 @@
 
 namespace Acme\DemoBundle\Controller;
 
-use Acme\DemoBundle\Entity\Event\ProductLikeEvent;
 use Acme\DemoBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\SecurityExtraBundle\Annotation\SecureParam;
 
 /**
@@ -65,7 +63,7 @@ class ProductController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
+            $em->flush();
 
             $msg = sprintf("Product '%s' successfully updated.", $product);
             $this->get('session')->getFlashBag()->add('success', $msg);

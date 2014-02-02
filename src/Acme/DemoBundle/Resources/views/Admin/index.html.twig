@@ -13,33 +13,33 @@
     <div class="table-responsive">
         <table class="table table-condensed table-hover table-bordered table-striped">
             <thead>
-            <tr>
-                <th style="width:75px">{{ knp_pagination_sortable(pagination, 'ID', 'r.id')|raw }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Locale', 'r.locale')|raw }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Name', 'r.name')|raw }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Email', 'r.email')|raw }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Country', 'ct.title')|raw }}</th>
-                <th>Items</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Created', 'r.createdAt')|raw }}</th>
-            </tr>
-            </thead>
-            {% for registration in pagination %}
-                <tcontent>
                 <tr>
-                    <td>{{ registration.id }}</td>
-                    <td>{{ registration.locale }}</td>
-                    <td>{{ registration.name }}</td>
-                    <td><a href="mailto:{{ registration.email }}">{{ registration.email }}</a></td>
-                    <td>{{ registration.country|trans }}</td>
-                    <td>
-                        {% for item in registration.items %}
-                            {{ item }}{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td>{{ registration.createdAt|date }}</td>
+                    <th style="width:75px">{{ knp_pagination_sortable(pagination, 'ID', 'r.id')|raw }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Locale', 'r.locale')|raw }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Name', 'r.name')|raw }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Email', 'r.email')|raw }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Country', 'ct.title')|raw }}</th>
+                    <th>Items</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Created', 'r.createdAt')|raw }}</th>
                 </tr>
-                </tcontent>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for registration in pagination %}
+                    <tr>
+                        <td>{{ registration.id }}</td>
+                        <td>{{ registration.locale }}</td>
+                        <td>{{ registration.name }}</td>
+                        <td><a href="mailto:{{ registration.email }}">{{ registration.email }}</a></td>
+                        <td>{{ registration.country|trans }}</td>
+                        <td>
+                            {% for item in registration.items %}
+                                {{ item }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ registration.createdAt|date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
     <div class="navigation">

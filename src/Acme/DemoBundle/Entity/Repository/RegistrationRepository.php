@@ -6,6 +6,16 @@ use Doctrine\ORM\EntityRepository;
 
 class RegistrationRepository extends EntityRepository
 {
+    public function getAll()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r, c, i')
+            ->leftJoin('r.country', 'c')
+            ->leftJoin('r.items', 'i')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getFilterQb($filters = [], $locale = 'en')
     {
         return $this->createQueryBuilder('r')
