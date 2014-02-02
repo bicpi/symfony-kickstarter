@@ -7,6 +7,8 @@ application that you can be used as a skeleton for a new applications.
 This document contains information on what's required to use this Kickstarter,
 what it contains, and how to get set it up.
 
+[![Build Status](https://secure.travis-ci.org/bicpi/symfony-kickstarter.png)](http://travis-ci.org/bicpi/symfony-kickstarter)
+
 ### Requirements
 
 * PHP 5.5+
