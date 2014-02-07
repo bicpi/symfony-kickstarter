@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\DemoBundle\Listener;
+namespace Acme\DemoBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\PreFlushEventArgs;
